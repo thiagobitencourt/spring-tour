@@ -27,9 +27,9 @@ public class AlunosResource {
 		return alunoRepository.findAll();
 	}
 	
-	@GetMapping(value="/{nome}")
-	public Aluno getByName(@PathVariable String nome) {
-		return alunoRepository.findByNome(nome);
+	@GetMapping(value="/{id}")
+	public Aluno getByName(@PathVariable Long id) {
+		return alunoRepository.findOne(id);
 	}
 	
 	@PostMapping
@@ -37,8 +37,8 @@ public class AlunosResource {
 		return alunoRepository.save(aluno);
 	}
 	
-	@PutMapping(value="/{nome}")
-	public Aluno updateAluno(@PathVariable String nome, @RequestBody Aluno aluno) {
+	@PutMapping(value="/{id}")
+	public Aluno updateAluno(@PathVariable Long id, @RequestBody Aluno aluno) {
 		return alunoRepository.save(aluno);
 	}
 	
