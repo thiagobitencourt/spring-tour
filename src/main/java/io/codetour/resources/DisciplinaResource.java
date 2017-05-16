@@ -1,5 +1,6 @@
 package io.codetour.resources;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,11 @@ public class DisciplinaResource {
 	@PostMapping
 	public Disciplina createDisciplina(@RequestBody Disciplina disciplina) {
 		return disciplinaRepository.save(disciplina);
+	}
+	
+	@DeleteMapping(value="/{id}")
+	public void removeDisciplina(@PathVariable Long id) {
+		disciplinaRepository.delete(id);
 	}
 	
 }
