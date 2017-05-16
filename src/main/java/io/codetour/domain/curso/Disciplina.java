@@ -10,13 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class Disciplina {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="disciplina_sequence")
+	@SequenceGenerator(name="disciplina_sequence", allocationSize=1, sequenceName="disciplina_sequence")
 	private Long id;
 	@NotNull
 	private String nome;
@@ -33,9 +35,9 @@ public class Disciplina {
 	@JoinColumn(name="semestre_id")
 	private Semestre semestre;
 	@OneToMany
-	private Collection<Disciplina> dependendias;
+	private Collection<Disciplina> dependencias;
 	
-	public Disciplina() { }
+	Disciplina() { }
 
 	public Long getId() {
 		return id;
@@ -85,11 +87,11 @@ public class Disciplina {
 		this.semestre = semestre;
 	}
 
-	public Collection<Disciplina> getDependendias() {
-		return dependendias;
+	public Collection<Disciplina> getDependencias() {
+		return dependencias;
 	}
 
-	public void setDependendias(Collection<Disciplina> dependendias) {
-		this.dependendias = dependendias;
+	public void setDependencias(Collection<Disciplina> dependencias) {
+		this.dependencias = dependencias;
 	}
 }
