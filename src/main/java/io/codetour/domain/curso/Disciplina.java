@@ -29,6 +29,7 @@ public class Disciplina {
 	@NotNull
 	private Curso curso;
 	@ManyToOne
+	@NotNull
 	@JoinColumn(name="semestre_id")
 	private Semestre semestre;
 	@OneToMany
