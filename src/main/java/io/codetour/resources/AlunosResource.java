@@ -28,8 +28,13 @@ public class AlunosResource {
 	}
 	
 	@GetMapping(value="/{id}")
-	public Aluno getByName(@PathVariable Long id) {
+	public Aluno getById(@PathVariable Long id) {
 		return alunoRepository.findOne(id);
+	}
+	
+	@GetMapping(value="/nome/{nome}")
+	public Aluno getByNome(@PathVariable String nome) {
+		return alunoRepository.findByNome(nome);
 	}
 	
 	@PostMapping
